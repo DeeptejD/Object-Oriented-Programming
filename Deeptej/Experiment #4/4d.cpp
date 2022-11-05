@@ -12,89 +12,73 @@ using namespace std;
 
 class String
 {
-    int len; // length of the string
-    char *p; // points to the start of the string
+    int len;
+    char *p;
+
 public:
     String()
     {
         len = 0;
         p = NULL;
     }
-    friend String operator+(String &, String &);
-    friend int operator<=(String &, String &);
+    friend String operator+(class String a, class String b);
+    friend int operator<(class String a, class String b);
     String(char *p);
-    String(String &s);
-    ~String() { delete p; }
-    friend ostream &operator<<(ostream &output, String);
-    void display();
+    friend ostream &operator<<(ostream &output, class String &s);
 };
 
-void String::display()
+ostream &operator<<(ostream &output, class String &s)
 {
-    for (int i = 0; i < len; i++)
-        cout << p[i];
-    cout << endl;
+    if (s.p == NULL)
+    {
+        cout << "The string does not exist\n";
+        return output;
+    }
+    cout << s.p;
 }
 
-// ostream &operator<<(ostream &output, String s)
-// {
-//     if (s.p == NULL)
-//     {
-//         printf("Attempted to print a NULL string\n");
-//         return output;
-//     }
-//     for (int i = 0; i < s.len; i++)
-//         cout << s.p[i];
-//     cout << endl;
-// }
-
-String::String(char *p)
+String::String(char *s)
 {
-    len = strlen(p);
+    len = strlen(s);
     p = new char[len + 1];
-    strcpy(this->p, p);
+    strcpy(p, s);
+    p[strlen(s)] = '\0';
 }
 
-String::String(String &s)
-{
-    len = s.len;
-    p = new char[len + 1];
-    strcpy(p, s.p);
-}
-
-String operator+(String &a, String &b)
+String operator+(class String a, class String b)
 {
     String temp;
     temp.len = a.len + b.len;
     temp.p = new char[a.len + b.len + 1];
     strcpy(temp.p, a.p);
     strcat(temp.p, b.p);
-    // temp.p[temp.len] = '\0';
     return (temp);
 }
 
-int operator <= (String &a, String &b)
+int operator<(String a, String b)
 {
-    int m = strlen(a.p), n = strlen(b.p);
-    return (m <= n);
+    if (a.len < b.len)
+        return 1;
+    else if (a.len > b.len)
+        return 2;
+    return 3;
 }
 
-char a[MAX], b[MAX];
+char a1[MAX], b2[MAX];
 int main(int argc, char const *argv[])
 {
     cout << "Enter String 1: ";
-    gets(a);
+    gets(a1);
     cout << "Enter String 2: ";
-    gets(b);
-    cout << "beg\n";
-    String s1(a), s2(b), s3;
+    gets(b2);
+    String s1(a1), s2(b2), s3;
     s3 = s1 + s2;
-    cout << "Here";
-    s3.display();
-    if (s1 <= s2)
-        s1.display();
-    else
-        s2.display();
-    cout << "End\n";
-    return 0;
+    cout << s3<<endl;
+    if ((s1 < s2) == 1)
+        cout << "Length of \"" << s1 << "\" is less than \"" << s2 <<"\""<< endl;
+    else if ((s1 < s2)==2)
+        cout<<"Length of \""<<s2<<"\" is less than \""<<s1<<"\""<<endl;
+    else    
+        cout<<"Length of \""<<s1<<"\" is the same as \""<<s2<<"\""<<endl;
+        return 0;
 }
