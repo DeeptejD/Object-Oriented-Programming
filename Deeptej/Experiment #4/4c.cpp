@@ -1,3 +1,8 @@
+// *************************************************************************************
+// Write a C++ program to overload binary stream insertion (<<) & extraction (>>) 
+// operators when used with objects.
+// *************************************************************************************
+
 #include <iostream>
 using namespace std;
 

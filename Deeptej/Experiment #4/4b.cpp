@@ -1,3 +1,11 @@
+// *************************************************************************************
+// Write a C++ program to understand overloading of binary operators to perform the 
+// following operations on the objects of the class: 
+// i. x = 5 + y 
+// ii. x = x * y where x & y are objects of the class 
+// iii. x = y - 5 
+// *************************************************************************************
+
 #include <iostream>
 using namespace std;
 
