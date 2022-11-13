@@ -53,11 +53,6 @@ void sports::get_scores()
 
 class result : public sports, public test_scores
 {
-    // protected:
-    // string name;
-    // int roll;
-    // int scores;
-    // int sub1, sub2;
 private:
     int final_score;
 
