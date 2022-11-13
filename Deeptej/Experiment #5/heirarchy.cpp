@@ -4,56 +4,53 @@
 
 using namespace std;
 
-class shape // base class
+class shape
 {
-protected:
     string name;
 
 public:
+    shape(string name) { this->name = name; }
     void basic_details() { cout << "The shape is: " << name << endl; }
 };
 
 class sphere : public shape
 {
-    float radius; // private member radius
-    // protected:
-    //     string name;
+    float radius;
+
 public:
-    // void basic_details();
     sphere(string name, float radius);
     void display();
     float volume() { return (1.33 * PI * pow(radius, 3)); }
 };
 
-sphere::sphere(string name, float radius) { this->name = name, this->radius = radius; }
+sphere::sphere(string name, float radius) : shape(name)
+{
+    this->radius = radius;
+}
 
 void sphere::display()
 {
-    // shape::basic_details();
-    cout << "The volume of a " << name << " of radius " << radius << " is: " << volume() << endl;
+    cout << "The volume of a sphere of radius " << radius << " is: " << volume() << endl;
 }
 
 class cone : public shape
 {
-    float radius, height; // private members
-    // protected:
-    //     string name;
+    float radius, height;
+
 public:
-    // void basic_details();
     cone(string name, float radius, float height);
     float volume() { return (0.33 * PI * pow(radius, 2) * height); }
     void display();
 };
 
-cone::cone(string name, float radius, float height)
+cone::cone(string name, float radius, float height) : shape(name)
 {
-    this->name = name, this->radius = radius, this->height = height;
+    this->radius = radius, this->height = height;
 }
 
 void cone::display()
 {
-    // shape::basic_details();
-    cout << "The volume of a " << name << " of radius " << radius << " and height " << height << " is: " << volume() << endl;
+    cout << "The volume of a cone of radius " << radius << " and height " << height << " is: " << volume() << endl;
 }
 
 int main()
