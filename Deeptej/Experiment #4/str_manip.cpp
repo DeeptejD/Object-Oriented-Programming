@@ -40,16 +40,15 @@ ostream &operator<<(ostream &output, class String &s)
 String::String(char *s)
 {
     len = strlen(s);
-    p = new char[len + 1];
+    p = new char[len];
     strcpy(p, s);
-    p[strlen(s)] = '\0';
 }
 
 String operator+(class String a, class String b)
 {
     String temp;
     temp.len = a.len + b.len;
-    temp.p = new char[a.len + b.len + 1];
+    temp.p = new char[a.len + b.len];
     strcpy(temp.p, a.p);
     strcat(temp.p, b.p);
     return (temp);
@@ -73,12 +72,12 @@ int main(int argc, char const *argv[])
     gets(b2);
     String s1(a1), s2(b2), s3;
     s3 = s1 + s2;
-    cout << s3<<endl;
+    cout << s3 << endl;
     if ((s1 < s2) == 1)
-        cout << "Length of \"" << s1 << "\" is less than \"" << s2 <<"\""<< endl;
-    else if ((s1 < s2)==2)
-        cout<<"Length of \""<<s2<<"\" is less than \""<<s1<<"\""<<endl;
-    else    
-        cout<<"Length of \""<<s1<<"\" is the same as \""<<s2<<"\""<<endl;
-        return 0;
+        cout << "Length of \"" << s1 << "\" is less than \"" << s2 << "\"" << endl;
+    else if ((s1 < s2) == 2)
+        cout << "Length of \"" << s2 << "\" is less than \"" << s1 << "\"" << endl;
+    else
+        cout << "Length of \"" << s1 << "\" is the same as \"" << s2 << "\"" << endl;
+    return 0;
 }
