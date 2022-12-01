@@ -1,23 +1,42 @@
 #include <iostream>
 using namespace std;
 
-class Abstract
+class Media
 {
 public:
-    void fun1() { cout << "This is fun1() from the bas class" << endl; }
-    virtual void display() = 0;
+    virtual void display_rating() = 0;
 };
 
-class Derived : public Abstract
+class book : private Media
 {
+    string name;
+    int rating;
+
 public:
-    void display() { cout << "Defined display in derived class\n"; }
+    book(string name, int rating) { this->name = name, this->rating = rating; }
+    void display_rating()
+    {
+        cout << "The rating for the book " << name << " is: " << rating << endl;
+    }
+};
+
+class tape : private Media
+{
+    string name;
+    int rating;
+
+public:
+    tape(string name, int rating) { this->name = name, this->rating = rating; }
+    void display_rating()
+    {
+        cout << "The rating for the tape " << name << " is: " << rating << endl;
+    }
 };
 
 int main(int argc, char const *argv[])
 {
-    Derived d;
-    d.display();
-    d.fun1();
+    book b("Up", 4);
+    tape t("alladin", 5);
+    b.display_rating(), t.display_rating();
     return 0;
 }
