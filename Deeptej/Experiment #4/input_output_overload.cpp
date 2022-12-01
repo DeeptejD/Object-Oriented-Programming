@@ -4,6 +4,7 @@
 // *************************************************************************************
 
 #include <iostream>
+#include<iomanip>
 using namespace std;
 
 class distance
@@ -22,7 +23,7 @@ public:
     friend istream &operator>>(istream &, distance &);
 };
 
-ostream &operator<<(ostream &output, class distance &d) { output << "ft: " << d.ft << " in: " << d.in << endl; }
+ostream &operator<<(ostream &output, class distance &d) { setw(15), output << "ft: " << d.ft << " in: " << d.in << endl; }
 
 istream &operator>>(istream &input, class distance &d) { input >> d.ft >> d.in; }
 
