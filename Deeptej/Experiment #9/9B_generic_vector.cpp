@@ -4,6 +4,29 @@
 #include <iostream>
 using namespace std;
 
+template <class T>
+class Vector
+{
+    T *ptr;
+    int size;
+
+public:
+    Vector() { size = 0; }
+    Vector(int size)
+    {
+        this->size = size;
+        ptr = new T[size];
+        for (int i = 0; i < size; i++)
+        {
+            cout << "Enter element: ";
+            cin >> ptr[i];
+        }
+    }
+    void modify(T x)
+    {
+    }
+};
+
 int main(int argc, char const *argv[])
 {
 
