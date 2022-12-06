@@ -3,6 +3,8 @@
 
 using namespace std;
 
+
+
 void secondhalf(char *str, string s, int len)
 {
     for (int j = 2; j <= len; j++)
@@ -22,9 +24,14 @@ void secondhalf(char *str, string s, int len)
 void print_pattern(char *str)
 {
     int len = strlen(str);
-    char *rev;
+    char rev[len];
     strcpy(rev, str);
-    strrev(rev);
+    int i=0, j=len-1;
+    while(i<j)
+    {
+        swap(rev[i], rev[j]);
+        i++, j--;
+    }
     string s = "";
     for (int i = 0; i < len; i++)
         s = s + rev[i];
