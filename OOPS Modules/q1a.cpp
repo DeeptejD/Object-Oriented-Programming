@@ -5,25 +5,42 @@ class rectangle;
 
 class polar
 {
-    int a, r;
+    float a, r;
 
 public:
-    polar(int a, int r) { this->a = a, this->r = r; }
+    polar(float a, float r) { this->a = a, this->r = r; }
     polar() {}
     polar(rectangle r);
+    void get_polar()
+    {
+        cout << "Enter a: ";
+        cin >> a;
+        cout << "Enter r: ";
+        cin >> r;
+    }
+    void show_polar()
+    {
+        cout << "a: " << a << endl
+             << "r: " << r << endl;
+    }
     friend class rectangle;
-    void show_polar() { cout << "a: " << a << endl
-                             << "r: " << r << endl; }
 };
 
 class rectangle
 {
-    int x, y;
+    float x, y;
 
 public:
     rectangle(){};
-    rectangle(int x, int y) { this->x = x, this->y = y; }
+    rectangle(float x, float y) { this->x = x, this->y = y; }
     rectangle(class polar p);
+    void get_rect()
+    {
+        cout << "Enter x: ";
+        cin >> x;
+        cout << "Enter y: ";
+        cin >> y;
+    }
     void show_rect()
     {
         cout << "x: " << x << endl
@@ -45,14 +62,19 @@ polar::polar(rectangle r)
 
 int main(int argc, char const *argv[])
 {
-    class polar p(10, 20);
-    class rectangle r(30, 40);
+    cout.precision(4);
+    class polar p;
+    p.get_polar();
+    rectangle r;
+    r.get_rect();
     cout << "Polar\n";
     p.show_polar();
     cout << "Rectangle\n";
     r.show_rect();
     p = r, r = p;
+    cout << "Polar\n";
     p.show_polar();
+    cout << "Rectangle\n";
     r.show_rect();
     return 0;
 }
