@@ -1,7 +1,10 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
+#include <queue>
+
+using namespace std;
 
 int main(int argc, char const *argv[])
 {
-    queue <int, vector<int>> q;
+    queue<int, list<int>> q;
     return 0;
 }
